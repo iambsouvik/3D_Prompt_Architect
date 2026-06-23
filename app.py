@@ -95,11 +95,9 @@ with col2:
     st.info("1. **Aspect Ratio** directly impacts composition. Use **9:16** for mobile-first content like Shorts, Reels, or TikToks.\n\n"
             "2. When creating human figures or figurines, keep **Subsurface Scattering** selected to achieve ultra-realistic skin depth.", icon="ℹ️")
 
-# --- 5. Library-Free Direct API Engine (SECURE VERSION) ---
+# --- 5. Library-Free Direct API Engine (STABLE VERSION) ---
 def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspect):
     
-    # 🔐 এখানে আমরা কোনো API Key সরাসরি লিখবো না। 
-    # অ্যাপটি যখন ইন্টারনেটে লাইভ হবে, তখন এটি Streamlit-এর ব্যাকএন্ড সিক্রেটস থেকে চাবিটি অটোমেটিক পড়ে নেবে।
     if "GEMINI_API_KEY" in st.secrets:
         api_key = st.secrets["GEMINI_API_KEY"]
     else:
@@ -112,7 +110,8 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     ar_suffix = ar_mapping.get(aspect, "--ar 1:1")
     materials_str = ", ".join(materials)
     
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+    # ⚡ Using the highly stable gemini-1.5-flash endpoint to prevent 503 service overloads
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     system_instruction = (
         "You are a premium 3D Asset Prompt Architect. Generate two distinct variations of a high-fidelity 3D prompt "
@@ -120,7 +119,6 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     )
     
     full_query = (
-        f"{system_instruction}\n\n"
         f"Create a master-level image generation prompt package for {target_ai}.\n"
         f"Core Concept: {idea}\n"
         f"Base Render Style: {style}\n"
@@ -135,6 +133,7 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     headers = {'Content-Type': 'application/json'}
     payload = {
         "contents": [{"parts": [{"text": full_query}]}],
+        "systemInstruction": {"parts": [{"text": system_instruction}]},
         "generationConfig": {"temperature": 0.75}
     }
     
@@ -143,7 +142,7 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
         if response.status_code == 200:
             return response.json()['candidates'][0]['content']['parts'][0]['text']
         else:
-            return f"ERROR_API: Request failed with API Status Code: {response.status_code}"
+            return f"ERROR_API: Request failed with API Status Code: {response.status_code}. Google servers might be temporarily busy, please try again."
     except Exception as e:
         return f"ERROR_API: Failed to establish connection. Details: {e}"
 
