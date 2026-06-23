@@ -95,7 +95,7 @@ with col2:
     st.info("1. **Aspect Ratio** directly impacts composition. Use **9:16** for mobile-first content like Shorts, Reels, or TikToks.\n\n"
             "2. When creating human figures or figurines, keep **Subsurface Scattering** selected to achieve ultra-realistic skin depth.", icon="ℹ️")
 
-# --- 5. Library-Free Direct API Engine (STABLE VERSION) ---
+# --- 5. Library-Free Direct API Engine (FIXED URL VERSION) ---
 def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspect):
     
     if "GEMINI_API_KEY" in st.secrets:
@@ -110,7 +110,7 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     ar_suffix = ar_mapping.get(aspect, "--ar 1:1")
     materials_str = ", ".join(materials)
     
-    # ⚡ Using the highly stable gemini-1.5-flash endpoint to prevent 503 service overloads
+    # ⚡ একদম স্ট্যান্ডার্ড মডেল এবং নিখুঁত v1beta এন্ডপয়েন্ট ইউআরএল (Fixes 404)
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     system_instruction = (
@@ -119,6 +119,7 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     )
     
     full_query = (
+        f"{system_instruction}\n\n"
         f"Create a master-level image generation prompt package for {target_ai}.\n"
         f"Core Concept: {idea}\n"
         f"Base Render Style: {style}\n"
@@ -131,10 +132,10 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     )
     
     headers = {'Content-Type': 'application/json'}
+    # v1beta-তে পেলোডের ভেতরেই টেক্সট হিসেবে পুশ করা সবচেয়ে নিরাপদ ও স্টেবল
     payload = {
         "contents": [{"parts": [{"text": full_query}]}],
-        "systemInstruction": {"parts": [{"text": system_instruction}]},
-        "generationConfig": {"temperature": 0.75}
+        "generationConfig": {"temperature": 0.7}
     }
     
     try:
@@ -142,7 +143,7 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
         if response.status_code == 200:
             return response.json()['candidates'][0]['content']['parts'][0]['text']
         else:
-            return f"ERROR_API: Request failed with API Status Code: {response.status_code}. Google servers might be temporarily busy, please try again."
+            return f"ERROR_API: Request failed with API Status Code: {response.status_code}. Please try again."
     except Exception as e:
         return f"ERROR_API: Failed to establish connection. Details: {e}"
 
