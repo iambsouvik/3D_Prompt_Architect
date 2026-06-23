@@ -10,111 +10,132 @@ st.set_page_config(
     layout="wide",
 )
 
-# Advanced Custom CSS for Fast Floating Elements & Deep Vibrant Gradient Theme
+# Advanced Custom CSS for Fast Floating Elements & Premium White-Glass 3D Theme
 st.markdown("""
     <style>
-    /* New Vibrant Deep Purple & Cyberpunk Magenta Gradient Background */
+    /* Premium Luminous White & Ice-Blue Cyberpunk Gradient Background */
     .stApp {
-        background: radial-gradient(circle at 50% 50%, #1e112a 0%, #0d0714 100%);
+        background: radial-gradient(circle at 50% 50%, #f0f4f9 0%, #d9e2ec 100%);
         overflow-x: hidden;
     }
     
-    /* Neon Pink & Cyan Glowing Header */
+    /* 3D Vibrant Neon Magenta Header */
     h1 {
-        color: #FF007F;
+        color: #ff0055;
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         text-align: center;
         font-weight: 900;
         letter-spacing: 2px;
-        text-shadow: 0 0 20px rgba(255, 0, 127, 0.6), 0 0 40px rgba(0, 255, 204, 0.4);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 0, 85, 0.4);
         margin-bottom: 5px;
     }
     
-    /* High-Speed Visible Floating Elements (Super Fast Movement) */
+    /* High-Speed Crisp & Clear Floating Elements (Super Fast & Highly Visible) */
     .stApp::before {
         content: "🧠 🤖 🐍 🚀 🏎️ ✏️ 📱 🎨 💻 ☄️";
-        font-size: 35px;
+        font-size: 38px;
         position: fixed;
         top: -100px;
         left: 0;
         width: 100%;
         height: 200%;
-        word-spacing: 120px;
-        line-height: 200px;
-        opacity: 0.35; /* অপাসিটি বাড়ানো হয়েছে যাতে স্পষ্ট দেখা যায় */
+        word-spacing: 130px;
+        line-height: 220px;
+        opacity: 0.55; /* অপাসিটি বাড়ানো হয়েছে যাতে সাদা ব্যাকগ্রাউন্ডে ক্রিস্টাল ক্লিয়ার দেখা যায় */
         pointer-events: none;
-        animation: fastFloatBackground 8s linear infinite; /* স্পিড বাড়ানো হয়েছে (২৫ সেকেন্ড থেকে ৮ সেকেন্ড) */
+        animation: fastFloatBackground 7s linear infinite; /* স্পিড আরও ফাস্ট করা হয়েছে */
         white-space: normal;
         z-index: 0;
     }
     
     @keyframes fastFloatBackground {
         0% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(150px) rotate(5deg); }
-        100% { transform: translateY(300px) rotate(0deg); }
+        50% { transform: translateY(180px) rotate(6deg); }
+        100% { transform: translateY(360px) rotate(0deg); }
     }
 
-    /* Glassmorphism Containers to make Background Elements Visible */
+    /* Transparent White Glassmorphism Containers (ফ্রস্টেড সাদা গ্লাস ইফেক্ট) */
     div[data-testid="stVerticalBlock"] > div {
-        background: rgba(26, 15, 38, 0.65) !important; /* আধা-স্বচ্ছ ব্যাকগ্রাউন্ড যাতে পেছনের জিনিস নড়াচড়া করলে বোঝা যায় */
-        backdrop-filter: blur(8px);
-        border-radius: 16px;
-        padding: 10px;
-    }
-
-    /* Premium Glowing Input Boxes */
-    textarea, input, select {
-        background-color: #261736 !important;
-        border: 2px solid #3d2354 !important;
-        color: #ffffff !important;
-        border-radius: 10px !important;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
-    }
-    textarea:focus, select:focus {
-        border-color: #FF007F !important;
-        box-shadow: 0 0 15px rgba(255, 0, 127, 0.6) !important;
+        background: rgba(255, 255, 255, 0.45) !important; /* আধা-স্বচ্ছ সাদা যাতে পেছনের জিনিস পুরোপুরি স্পষ্ট দেখা যায় */
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.6) !important;
+        border-radius: 20px;
+        padding: 15px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08) !important;
     }
     
-    /* Ultra-Premium Interactive Button with Radiant Glow */
+    /* Elegant Sidebar Glass Theme */
+    section[data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.6) !important;
+        backdrop-filter: blur(10px);
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Coloring 3D Input Boxes & Selectboxes */
+    textarea, input, select {
+        background-color: rgba(255, 255, 255, 0.8) !important;
+        border: 2px solid #0099ff !important; /* ৩D কালারিং নিয়ন বর্ডার */
+        color: #1f2d3d !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.06), 0 4px 10px rgba(0, 153, 255, 0.1) !important;
+    }
+    textarea:focus, select:focus {
+        border-color: #ff0055 !important;
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.4) !important;
+    }
+    
+    /* Vibrant 3D Interactive Button with Extreme Radiant Glow */
     .stButton>button {
-        background: linear-gradient(135deg, #FF007F 0%, #7000FF 50%, #00FFCC 100%) !important;
+        background: linear-gradient(135deg, #ff0055 0%, #0099ff 50%, #00ffcc 100%) !important;
         color: #ffffff !important;
         font-size: 16px !important;
         font-weight: bold !important;
         letter-spacing: 1px;
         border: none !important;
-        border-radius: 12px !important;
+        border-radius: 14px !important;
         padding: 14px 30px !important;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4) !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        box-shadow: 0 6px 20px rgba(0, 153, 255, 0.3), inset 0 -4px 0px rgba(0,0,0,0.2) !important; /* 3D বাটন ইফেক্ট */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     .stButton>button:hover {
-        transform: translateY(-3px) scale(1.02) !important;
-        box-shadow: 0 8px 25px rgba(255, 0, 127, 0.8), 0 0 40px rgba(112, 0, 255, 0.5) !important;
+        transform: translateY(-4px) scale(1.02) !important;
+        box-shadow: 0 12px 28px rgba(255, 0, 85, 0.5), 0 0 40px rgba(0, 153, 255, 0.3) !important;
+    }
+    .stButton>button:active {
+        transform: translateY(1px) !important;
+        box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
     }
     
-    /* Custom Styling for Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
-    }
+    /* 3D Custom Tabs */
     .stTabs [data-baseweb="tab"] {
-        background-color: #261736 !important;
-        border-radius: 8px 8px 0px 0px;
-        color: #ffffff !important;
-        padding: 10px 20px !important;
+        background-color: rgba(255, 255, 255, 0.7) !important;
+        border: 1px solid rgba(0, 153, 255, 0.2) !important;
+        border-radius: 10px 10px 0px 0px;
+        color: #1f2d3d !important;
+        font-weight: bold !important;
+        padding: 10px 22px !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.03) !important;
+    }
+    
+    /* Text overrides for readability on White-Glass */
+    label, p, span {
+        color: #2c3e50 !important;
+        font-weight: 600 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
 # --- 2. Header Section ---
 st.markdown("<h1>🎨 3D ASSET PROMPT ARCHITECT ENGINES</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #00FFCC; font-weight: 600; letter-spacing: 1px;'>Next-Gen AI Prompt Generator for 3D Artists & Creators</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #0099ff; font-weight: 700; letter-spacing: 1px;'>Next-Gen AI Prompt Generator for 3D Artists & Creators</p>", unsafe_allow_html=True)
 st.write("---")
 
 # --- 3. Left Sidebar (Advanced Control Panel) ---
 with st.sidebar:
-    st.markdown("<h2 style='color: #FF007F; text-shadow: 0 0 10px rgba(255,0,127,0.3);'>🛠️ Control Panel</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: #ff0055; text-shadow: 0 0 10px rgba(255,0,85,0.2);'>🛠️ Control Panel</h2>", unsafe_allow_html=True)
     st.write("Configure your rendering parameters:")
     
     ai_model = st.selectbox(
@@ -159,11 +180,11 @@ with col1:
     generate_btn = st.button("🚀 ARCHITECT PROMPT", use_container_width=True)
 
 with col2:
-    st.markdown("<h4 style='color: #FF007F;'>💡 Quick Tips:</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #ff0055;'>💡 Quick Tips:</h4>", unsafe_allow_html=True)
     st.info("1. **Aspect Ratio** directly impacts composition. Use **9:16** for mobile-first content like Shorts, Reels, or TikToks.\n\n"
             "2. When creating human figures or figurines, keep **Subsurface Scattering** selected to achieve ultra-realistic skin depth.", icon="ℹ️")
 
-# --- 5. Universal & Error-Free API Engine ---
+# --- 5. Multi-Model Fallback Engine (Auto-Heals 503 Overloads) ---
 def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspect):
     
     if "GEMINI_API_KEY" in st.secrets:
@@ -177,8 +198,6 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     ar_mapping = {"1:1 (Square)": "--ar 1:1", "16:9 (Landscape)": "--ar 16:9", "9:16 (Vertical/Reels)": "--ar 9:16", "4:5 (Instagram)": "--ar 4:5"}
     ar_suffix = ar_mapping.get(aspect, "--ar 1:1")
     materials_str = ", ".join(materials)
-    
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
     
     full_query = (
         f"You are a premium 3D Asset Prompt Architect. Your job is to generate two distinct variations of a high-fidelity 3D prompt "
@@ -195,18 +214,27 @@ def generate_advanced_prompts_raw(idea, target_ai, style, light, materials, aspe
     )
     
     headers = {'Content-Type': 'application/json'}
-    payload = {
-        "contents": [{"parts": [{"text": full_query}]}]
-    }
+    payload = {"contents": [{"parts": [{"text": full_query}]}]}
+    
+    url_primary = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+    url_fallback = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
     
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url_primary, headers=headers, json=payload)
         if response.status_code == 200:
             return response.json()['candidates'][0]['content']['parts'][0]['text']
+        
+        elif response.status_code in [503, 429, 500]:
+            fallback_response = requests.post(url_fallback, headers=headers, json=payload)
+            if fallback_response.status_code == 200:
+                return fallback_response.json()['candidates'][0]['content']['parts'][0]['text']
+            else:
+                return f"ERROR_API: Both servers are temporarily unavailable ({fallback_response.status_code}). Please wait a few seconds and try again."
         else:
-            return f"ERROR_API: Server responded with status code {response.status_code}. Please try again."
+            return f"ERROR_API: Request failed with Status Code {response.status_code}."
+            
     except Exception as e:
-        return f"ERROR_API: Connection error. Details: {e}"
+        return f"ERROR_API: Connection failed. Details: {e}"
 
 # --- 6. Output Dashboard Display ---
 if generate_btn:
@@ -238,13 +266,13 @@ if generate_btn:
                 tab1, tab2, tab3 = st.tabs(["🔥 Variation 1 (Cinematic)", "🎬 Variation 2 (Dynamic)", "🚫 Negative Prompt"])
                 
                 with tab1:
-                    st.markdown("<p style='color: #00FFCC;'><b>Cinematic & Highly Detailed Prompt:</b></p>", unsafe_allow_html=True)
+                    st.markdown("<p style='color: #0099ff;'><b>Cinematic & Highly Detailed Prompt:</b></p>", unsafe_allow_html=True)
                     st.code(v1, language="text")
                 with tab2:
-                    st.markdown("<p style='color: #0099FF;'><b>Dynamic Composition/Alternative Prompt:</b></p>", unsafe_allow_html=True)
+                    st.markdown("<p style='color: #ff0055;'><b>Dynamic Composition/Alternative Prompt:</b></p>", unsafe_allow_html=True)
                     st.code(v2, language="text")
                 with tab3:
-                    st.markdown("<p style='color: #FF3366;'><b>Negative Prompt (Exclude deformities & artifacts):</b></p>", unsafe_allow_html=True)
+                    st.markdown("<p style='color: #7000FF;'><b>Negative Prompt (Exclude deformities & artifacts):</b></p>", unsafe_allow_html=True)
                     st.code(neg, language="text")
                     
                 st.success("✨ Premium prompt configurations successfully generated!")
@@ -252,9 +280,9 @@ if generate_btn:
 # --- 7. Premium Custom Footer Credits ---
 st.write("---")
 footer_html = """
-<div style="text-align: center; color: #ffffff; font-size: 14px; margin-top: 30px; padding: 12px; background: rgba(38, 23, 54, 0.8); border-radius: 10px; border: 1px solid rgba(255, 0, 127, 0.3);">
+<div style="text-align: center; color: #2c3e50; font-size: 14px; margin-top: 30px; padding: 12px; background: rgba(255, 255, 255, 0.6); border-radius: 12px; border: 1px solid rgba(0, 153, 255, 0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
     Developed with ⚡ by 
-    <a href="https://www.facebook.com/iambsouvik" target="_blank" style="color: #00FFCC; text-decoration: none; font-weight: bold; text-shadow: 0 0 8px rgba(0,255,204,0.5);">
+    <a href="https://www.facebook.com/iambsouvik" target="_blank" style="color: #ff0055; text-decoration: none; font-weight: bold; text-shadow: 0 0 8px rgba(255,0,85,0.2);">
         B souvik
     </a>
 </div>
