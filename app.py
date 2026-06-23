@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# Advanced Custom CSS for Fast Floating Elements & Premium White-Glass 3D Theme
+# Advanced Custom CSS for Fast Floating Elements & Full Header Transparency
 st.markdown("""
     <style>
     /* Premium Luminous White & Ice-Blue Cyberpunk Gradient Background */
@@ -19,7 +19,7 @@ st.markdown("""
         overflow-x: hidden;
     }
     
-    /* 3D Vibrant Neon Magenta Header */
+    /* 3D Vibrant Neon Magenta Header with 100% Transparent Background */
     h1 {
         color: #ff0055;
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -28,6 +28,18 @@ st.markdown("""
         letter-spacing: 2px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 0, 85, 0.4);
         margin-bottom: 5px;
+        background: transparent !important;
+    }
+    
+    /* Ensuring Header Block and Dividers have no background or box fills */
+    div[data-testid="stMarkdownContainer"] {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+    hr {
+        background: transparent !important;
+        border: 0;
+        border-top: 1px solid rgba(0, 153, 255, 0.2) !important;
     }
     
     /* High-Speed Crisp & Clear Floating Elements (Super Fast & Highly Visible) */
@@ -41,9 +53,9 @@ st.markdown("""
         height: 200%;
         word-spacing: 130px;
         line-height: 220px;
-        opacity: 0.55; /* অপাসিটি বাড়ানো হয়েছে যাতে সাদা ব্যাকগ্রাউন্ডে ক্রিস্টাল ক্লিয়ার দেখা যায় */
+        opacity: 0.6; /* ওপরে কোনো সাদা ব্যাকগ্রাউন্ড না থাকায় এটি এখন পুরোপুরি ক্লিয়ার দেখা যাবে */
         pointer-events: none;
-        animation: fastFloatBackground 7s linear infinite; /* স্পিড আরও ফাস্ট করা হয়েছে */
+        animation: fastFloatBackground 7s linear infinite;
         white-space: normal;
         z-index: 0;
     }
@@ -54,9 +66,9 @@ st.markdown("""
         100% { transform: translateY(360px) rotate(0deg); }
     }
 
-    /* Transparent White Glassmorphism Containers (ফ্রস্টেড সাদা গ্লাস ইফেক্ট) */
-    div[data-testid="stVerticalBlock"] > div {
-        background: rgba(255, 255, 255, 0.45) !important; /* আধা-স্বচ্ছ সাদা যাতে পেছনের জিনিস পুরোপুরি স্পষ্ট দেখা যায় */
+    /* Transparent White Glassmorphism Containers ONLY for Input Panel & Sidebar */
+    div[data-testid="stVerticalBlock"] > div:nth-child(n+3) {
+        background: rgba(255, 255, 255, 0.45) !important; 
         backdrop-filter: blur(12px) saturate(180%);
         -webkit-backdrop-filter: blur(12px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.6) !important;
@@ -75,7 +87,7 @@ st.markdown("""
     /* Coloring 3D Input Boxes & Selectboxes */
     textarea, input, select {
         background-color: rgba(255, 255, 255, 0.8) !important;
-        border: 2px solid #0099ff !important; /* ৩D কালারিং নিয়ন বর্ডার */
+        border: 2px solid #0099ff !important;
         color: #1f2d3d !important;
         font-weight: 600 !important;
         border-radius: 12px !important;
@@ -97,7 +109,7 @@ st.markdown("""
         border-radius: 14px !important;
         padding: 14px 30px !important;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        box-shadow: 0 6px 20px rgba(0, 153, 255, 0.3), inset 0 -4px 0px rgba(0,0,0,0.2) !important; /* 3D বাটন ইফেক্ট */
+        box-shadow: 0 6px 20px rgba(0, 153, 255, 0.3), inset 0 -4px 0px rgba(0,0,0,0.2) !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     .stButton>button:hover {
@@ -106,7 +118,6 @@ st.markdown("""
     }
     .stButton>button:active {
         transform: translateY(1px) !important;
-        box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
     }
     
     /* 3D Custom Tabs */
@@ -117,20 +128,19 @@ st.markdown("""
         color: #1f2d3d !important;
         font-weight: bold !important;
         padding: 10px 22px !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.03) !important;
     }
     
     /* Text overrides for readability on White-Glass */
-    label, p, span {
+    label, p, span, .stMarkdown {
         color: #2c3e50 !important;
         font-weight: 600 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 2. Header Section ---
+# --- 2. Header Section (Fully Transparent) ---
 st.markdown("<h1>🎨 3D ASSET PROMPT ARCHITECT ENGINES</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #0099ff; font-weight: 700; letter-spacing: 1px;'>Next-Gen AI Prompt Generator for 3D Artists & Creators</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #0099ff; font-weight: 700; letter-spacing: 1px; background: transparent;'>Next-Gen AI Prompt Generator for 3D Artists & Creators</p>", unsafe_allow_html=True)
 st.write("---")
 
 # --- 3. Left Sidebar (Advanced Control Panel) ---
